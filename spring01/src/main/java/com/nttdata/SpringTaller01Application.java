@@ -31,6 +31,10 @@ public class SpringTaller01Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		AssignmentController assignment = new AssignmentController();
+		assignment.testMethod();
+		
 		final Floor floor = new Floor();
 		floor.setLevel(2);
 		floor.setApartmentQty(4);
@@ -58,8 +62,6 @@ public class SpringTaller01Application implements CommandLineRunner {
 				}
 			}
 		}
-		AssignmentController assignment = new AssignmentController();
-		assignment.testMethod();
 	}
 
 }

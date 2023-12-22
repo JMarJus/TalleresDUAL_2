@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepositoryI extends JpaRepository<Person, Long> {
 
+	public void deleteByIdentityDoc(final String identityDoc);
+
 	public Person findByIdentityDoc(final String identityDoc);
 	
 	public List<Person> findByApartmentId(final Long apartmentId);

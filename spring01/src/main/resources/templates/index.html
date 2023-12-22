@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+	
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Spring 01 - Building Management</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 	<table class="table">
 		<thead class="thead-dark">
@@ -14,25 +16,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<th:block th:each="plato : ${menu}">
-			</th:block>
-				<tr>
-					<td scope="row">
-						<a th:href="addPerson.html" name="addPerson" class="btn btn-success">Add new person</a>
-					<td scope="row">
-						<a href="addApartment" name="addApartment" class="btn btn-success">Add new apartment</a>
-					</td>
-					<td scope="row">
-						<a href="addFloor" name="addFloor" class="btn btn-success">Add new floor</a>
-					</td>
-				</tr>
-				<tr>
-					<td scope="row">
-						<a th:href="@{/getAddPerson}" role="button">enlace</a>
-					</td>
-				</tr>
+			<tr>
+				<td scope="row">
+					<a th:href="@{/getAddPerson}" name="addPerson" class="btn btn-success">Add new person</a>
+					<a th:href="@{/getAddApartment}" name="addApartment" class="btn btn-success">Add new apartment</a>
+					<a th:href="@{/getAddFloor}" name="addFloor" class="btn btn-success">Add new floor</a>
+				</td>
+			</tr>
+			<tr>
+				<td scope="row">
+					<a th:href="@{/getPeople}" name="seePeople" class="btn btn-success">List all people</a>
+					<a th:href="@{/getApartments}" name="seeApartments" class="btn btn-success">List all apartments</a>
+					<a th:href="@{/getFloors}" name="seeFloors" class="btn btn-success">List all floors</a>
+				</td>
+			</tr>
 		</tbody>
 	</table>
-
 </body>
+
 </html>

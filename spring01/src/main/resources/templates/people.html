@@ -6,34 +6,39 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
-		<body class="card-body">
+	<body class="card-body">
 		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Add a new person to the building:</div>
-		  <div class="card-body">
-				<form th:action="@{/actAddPerson}" th:object="${person}" method="POST">
-					<div class="form-group">
-			  			<label for="identityDoc">Identity Document</label>
-			  			<input type="text" required="required" class="form-control" id="identityDoc" name="identityDoc">
-					</div>
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input type="text" required="required" class="form-control" id="name" name="name">
-					</div>
-					<div class="form-group">
-						<label for="surname">Surname</label>
-						<input type="text" required="required" class="form-control" id="surname" name="surname">
-					</div>
-					<div class="form-group">
-						<label for="floor">Floor</label>
-						<input type="text" required="required" class="form-control" id="floor" name="floor" placeholder="1">
-					</div>
-					<div class="form-group">
-						<label for="apartment">Apartment</label>
-						<input type="text" required="required" class="form-control" id="apartment" name="apartment" placeholder="A">
-					</div>
-					<button type="submit" name="btnNewPerson" class="btn btn-success">Create new person</button>
-				</form>
-			  </div>
+			<div class="card-header">List of all the people in the building</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Identity Document</th>
+							<th scope="col">Name</th>
+							<th scope="col">Surname</th>
+							<th scope="col">Apartment</th>
+							<th scope="col">-</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="person:${people}">
+							<tr>
+								<td scope="row" th:text="${person.id}"/>
+								<td scope="row" th:text="${person.identityDoc}"/>
+								<td scope="row" th:text="${person.name}"/>
+								<td scope="row" th:text="${person.surname}"/>
+								<td scope="row" th:text="${person.apartmentId}"/>
+								<td scope="row">
+									<form th:action="@{/postRemovePerson}" method="post">
+										<button type="submit" id="btnRemovePerson" name="identityDoc" th:value="${person.identityDoc}" class="btn btn-danger">X</button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
 			</div>
+		</div>
 	</body>
 </html>

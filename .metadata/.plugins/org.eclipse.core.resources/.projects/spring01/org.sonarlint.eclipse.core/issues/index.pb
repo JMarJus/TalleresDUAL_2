@@ -47,3 +47,5 @@ n
 >src/main/java/com/nttdata/controllers/ApartmentController.java,5\7\574ce77ff43ad1d64fa75b45acc2c967711e3af7
 W
 'src/main/resources/templates/index.html,c\4\c4d2f13df3643ad7f9a42f7eb5462518cbeba268
+X
+(src/main/resources/templates/people.html,d\d\dd2f61bf50b1eeeb1d350f05f7f8ed65c999804c

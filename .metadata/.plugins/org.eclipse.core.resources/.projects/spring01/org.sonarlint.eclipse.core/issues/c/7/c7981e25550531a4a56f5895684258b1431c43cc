@@ -1,11 +1,11 @@
 
-e	java:S1064"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106:"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106<"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
 e	java:S1068"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
 }
 java:S6813"BRemove this field injection and use constructor injection instead.8‰¾›ïÈ1b 0132ec8cee01c5dd244e1a60fe6448a1h
+e	java:S106="+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
 }
 java:S6813"BRemove this field injection and use constructor injection instead.8‰¾›ïÈ1b 0132ec8cee01c5dd244e1a60fe6448a1h
-e	java:S1069"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
-e	java:S1066"+Replace this use of System.out by a logger.8À“ğÈ1b bb1c3f2ea781263d3a2bb92b06a2061fh
 }
 java:S6813"BRemove this field injection and use constructor injection instead.8‰¾›ïÈ1b 0132ec8cee01c5dd244e1a60fe6448a1h
