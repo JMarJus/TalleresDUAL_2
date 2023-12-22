@@ -1,0 +1,16 @@
+package com.nttdata.services;
+
+import java.util.List;
+
+import com.nttdata.persistence.Floor;
+
+public interface FloorServiceI {
+	
+	void newFloor(Floor person);
+	
+	void removeFloor(Floor person);
+	
+	public List<Floor> getAllFloors();
+	
+	public List<Floor> getFloorByLevel(final Integer level);
+}

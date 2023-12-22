@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>NTT DATA CRUD</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+		<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Datos de la persona</div>
+		  <div class="card-body">
+				<form th:action="@{/actAddNuevaPersona}" th:object="${nuevaPersona}" method="POST">
+					<div class="form-group">
+			  			<label for="itNombre">Nombre</label>
+			  			<input type="text" required="required" class="form-control" id="itNombre" name="nombre" placeholder="Nombre de la persona.">
+					</div>
+					<div class="form-group">
+						  <label for="itDni">DNI</label>
+						  <input required="required" type="text" class="form-control" id="itDni" name="dni" placeholder="D.N.I.">
+					</div>
+					<button type="submit" name="btnAPersona" class="btn btn-success">Añadir</button>
+				</form>
+			  </div>
+			</div>
+	</body>
+</html>

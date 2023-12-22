@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Spring 01 - Building Management</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="plato : ${menu}">
+				<tr>
+					<td scope="row">
+						<form action="@{addPerson}">
+							<input name="addPerson" type="submit" value="Add new person" class="btn btn-success"></input>
+						</form>
+					</td>
+					<td scope="row">
+						<form action="@{/addApartment}">
+							<input name="newApartment" type="submit" value="Add new apartment" class="btn btn-success"></input>
+						</form>
+					</td>
+					<td scope="row">
+						<form action="@{/addFloor}">
+							<input name="newFloor" type="submit" value="Add new floor" class="btn btn-success"></input>
+						</form>
+					</td>
+				</tr>
+			</th:block>
+		</tbody>
+	</table>
+
+</body>
+</html>

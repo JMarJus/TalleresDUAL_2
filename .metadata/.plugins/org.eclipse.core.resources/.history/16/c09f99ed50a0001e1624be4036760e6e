@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Spring 01 - Add person</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+		<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Add a new person to the building:</div>
+		  <div class="card-body">
+				<form th:action="@{./createCar}" th:object="${cochecito}" method="POST">
+					<div class="form-group">
+			  			<label for="identityDoc">Identity Document</label>
+			  			<input type="text" required="required" class="form-control" id="identityDoc" name="identityDoc">
+					</div>
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="text" required="required" class="form-control" id="name" name="name">
+					</div>
+					<div class="form-group">
+						<label for="surname">Surname</label>
+						<input type="text" required="required" class="form-control" id="surname" name="surname">
+					</div>
+					<div class="form-group">
+						<label for="floor">Floor</label>
+						<input type="text" required="required" class="form-control" id="floor" name="floor" placeholder="1">
+					</div>
+					<div class="form-group">
+						<label for="apartment">Apartment</label>
+						<input type="text" required="required" class="form-control" id="apartment" name="apartment" placeholder="A">
+					</div>
+					<button type="submit" name="btnNewPerson" class="btn btn-success">Create new person</button>
+					<button type="submit" name="btnMenu" class="btn btn-success">Return to menu</button>
+				</form>
+			  </div>
+			</div>
+	</body>
+</html>

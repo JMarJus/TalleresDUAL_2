@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>SISTEMA NTT DATA</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+		<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Matriculación del vehículo.</div>
+		  <div class="card-body">
+				<form th:action="@{./createCar}" th:object="${cochecito}" method="POST">
+					<div class="form-group">
+			  			<label for="inpCarRegistration">Matrícula</label>
+			  			<input type="text" required="required" class="form-control" id="inpTcarRegistration" name="carRegistration" placeholder="1234 ABC">
+					</div>
+					<div class="form-group">
+						  <label for="inpMake">Marca</label>
+						  <input type="text" required="required" class="form-control" id="inpTmake" name="make" placeholder="Marca.">
+					</div>
+					<div class="form-group">
+						  <label for="inpModel">Modelo</label>
+						  <input required="required" type="text" class="form-control" id="inpTmodel" name="model" placeholder="Modelo.">
+					</div>
+					<button type="submit" name="btnCreateCar" class="btn btn-success">Matricular</button>
+				</form>
+			  </div>
+			</div>
+	</body>
+</html>

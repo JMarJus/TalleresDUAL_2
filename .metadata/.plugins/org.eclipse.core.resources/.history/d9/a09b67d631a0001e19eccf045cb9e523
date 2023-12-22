@@ -1,0 +1,5 @@
+package com.nttdata.persistence;
+
+public class Apartment {
+
+}

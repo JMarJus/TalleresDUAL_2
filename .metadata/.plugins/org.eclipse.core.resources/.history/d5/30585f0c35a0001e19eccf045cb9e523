@@ -1,0 +1,51 @@
+package com.nttdata;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.nttdata.persistence.Apartment;
+import com.nttdata.persistence.Floor;
+import com.nttdata.persistence.Person;
+import com.nttdata.services.PersonServiceI;
+
+@SpringBootApplication
+public class SpringTaller01Application implements CommandLineRunner {
+
+	@Autowired
+	private PersonServiceI personService;
+	@Autowired
+	private PersonServiceI apartmentService;
+	@Autowired
+	private PersonServiceI floorService;
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringTaller01Application.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		final Floor floor = new Floor();
+		floor.setLevel(2);
+		floor.setApartmentQty(4);
+		floorService.newFloor(floor);
+		
+		final Apartment apartment = new Apartment();
+		apartment.setLetter('A');
+		apartmentService.newApartment(apartment);
+		
+		final Person person = new Person();
+		person.setIdentityDoc("77230084V");
+		person.setApartmentId("0");
+		person.setName("Juan");
+		person.setSurname("Martínez Justicia");
+		personService.newPerson(person);
+
+		for (Person personGot: personService.getAllPeople()) {
+			for (Apartment apartmentGot: personService.getAllApartments())
+			if (personGot.getAparmentId());
+		}
+	}
+
+}
