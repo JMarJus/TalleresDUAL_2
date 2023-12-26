@@ -45,7 +45,7 @@ public class PersonServiceImpl implements PersonServiceI {
 	}
 
 	@Override
-	public List<Person> getPersonByApartment(Long apartmentId) {
+	public List<Person> getPersonByApartmentId(Long apartmentId) {
 		return personRepository.findByApartmentId(apartmentId);
 	}
 }

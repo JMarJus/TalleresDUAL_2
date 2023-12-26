@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Spring 01 - View person</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+			<div class="card-header">List of all the people in the building</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Identity Document</th>
+							<th scope="col">Name</th>
+							<th scope="col">Surname</th>
+							<th scope="col">Floor</th>
+							<th scope="col">Apartment</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="person:${people}">
+							<tr>
+								<td th:text="${person.id}"/>
+								<td th:text="${person.identityDoc}"/>
+								<td th:text="${person.name}"/>
+								<td th:text="${person.surname}"/>
+								<th:block th:each="apartment:${apartments}">
+								<td th:text="${person.surname}"/>
+									<span th:if="${apartment.id}==${person.apartmentId}"><td th:text="${apartment.letter}"/></span>
+									<th:block th:each="floor:${floors}">
+										<span th:if="${floor.id}==${apartment.floorId}"><td th:text="${floor.level}"/></span>
+									</th:block>
+								</th:block>
+								<td>
+									<form th:action="@{/postRemovePerson}" method="post">
+										<button type="submit" id="btnRemovePerson" name="identityDoc" th:value="${person.identityDoc}" class="btn btn-danger">X</button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

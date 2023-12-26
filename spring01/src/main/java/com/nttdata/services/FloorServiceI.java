@@ -16,4 +16,8 @@ public interface FloorServiceI {
 	public List<Floor> getAllFloors();
 	
 	public Floor getFloorByLevel(final Integer level);
+
+	Optional<Floor> getFloorById(Long id);
+
+	void removeFloorById(Long id);
 }

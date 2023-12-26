@@ -39,4 +39,14 @@ public class FloorServiceImpl implements FloorServiceI {
 	public Floor getFloorByLevel(Integer level) {
 		return floorRepository.findByLevel(level);
 	}
+
+	@Override
+	public Optional<Floor> getFloorById(Long id) {
+		return floorRepository.findById(id);
+	}
+
+	@Override
+	public void removeFloorById(Long id) {
+		floorRepository.deleteById(id);
+	}
 }

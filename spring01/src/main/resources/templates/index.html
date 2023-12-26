@@ -12,22 +12,36 @@
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Options</th>
+				<th scope="col">Building Manager - Main menu</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td scope="row">
-					<a th:href="@{/getAddPerson}" name="addPerson" class="btn btn-success">Add new person</a>
-					<a th:href="@{/getAddApartment}" name="addApartment" class="btn btn-success">Add new apartment</a>
-					<a th:href="@{/getAddFloor}" name="addFloor" class="btn btn-success">Add new floor</a>
-				</td>
-			</tr>
-			<tr>
-				<td scope="row">
-					<a th:href="@{/getPeople}" name="seePeople" class="btn btn-success">List all people</a>
-					<a th:href="@{/getApartments}" name="seeApartments" class="btn btn-success">List all apartments</a>
-					<a th:href="@{/getFloors}" name="seeFloors" class="btn btn-success">List all floors</a>
+				<td>
+					<div class="card text-white bg-dark mb-3">
+		  				<div class="card-body">
+							<p>Add elements:</p>
+							<a th:href="@{/getAddPerson}" class="btn btn-success">Add new person</a>
+							<a th:href="@{/getAddApartment}" class="btn btn-success">Add new apartment</a>
+							<a th:href="@{/getAddFloor}" class="btn btn-success">Add new floor</a>
+						</div>
+					</div>
+					<div class="card text-white bg-dark mb-3">
+		  				<div class="card-body">
+							<p>List elements:</p>
+							<a th:href="@{/getPeople}" class="btn btn-success">List all people</a>
+							<a th:href="@{/getApartments}" class="btn btn-success">List all apartments</a>
+							<a th:href="@{/getFloors}" class="btn btn-success">List all floors</a>
+						</div>
+					</div>
+					<div class="card text-white bg-dark mb-3">
+		  				<div class="card-body">
+							<p>Filter elements:</p>
+							<a th:href="@{/getPersonSearch}" class="btn btn-success">Filter people</a>
+							<a th:href="@{/getApartmentSearch}" class="btn btn-success">Filter apartments</a>
+							<a th:href="@{/getFloorSearch}" class="btn btn-success">Filter floors</a>
+						</div>
+					</div>
 				</td>
 			</tr>
 		</tbody>

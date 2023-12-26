@@ -12,4 +12,9 @@ public class AssignmentController {
 	public String testMethod() {
 		return "index.html";
 	}
+	
+	@GetMapping("/getIndex")
+	public String getIndex() {
+		return "index";
+	}
 }

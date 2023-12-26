@@ -18,5 +18,5 @@ public interface PersonServiceI {
 	
 	public List<Person> getPersonByName(final String name);
 	
-	public List<Person> getPersonByApartment(final Long apartmentId);
+	public List<Person> getPersonByApartmentId(final Long apartmentId);
 }

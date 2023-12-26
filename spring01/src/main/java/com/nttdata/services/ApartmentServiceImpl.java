@@ -1,6 +1,7 @@
 package com.nttdata.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,15 @@ public class ApartmentServiceImpl implements ApartmentServiceI {
 	@Override
 	public List<Apartment> getApartmentByFloor(Long floorId) {
 		return apartmentRepository.findByFloorId(floorId);
+	}
+
+	@Override
+	public Optional<Apartment> getApartmentById(Long id) {
+		return apartmentRepository.findById(id);
+	}
+
+	@Override
+	public void removeApartmentById(Long id) {
+		apartmentRepository.deleteById(id);
 	}
 }

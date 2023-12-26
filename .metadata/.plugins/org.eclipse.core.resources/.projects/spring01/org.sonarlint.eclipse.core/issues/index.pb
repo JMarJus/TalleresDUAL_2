@@ -49,3 +49,11 @@ W
 'src/main/resources/templates/index.html,c\4\c4d2f13df3643ad7f9a42f7eb5462518cbeba268
 X
 (src/main/resources/templates/people.html,d\d\dd2f61bf50b1eeeb1d350f05f7f8ed65c999804c
+X
+(src/main/resources/templates/floors.html,e\2\e2b06cb0d687a5e44cca7642855b64a82315f6f7
+\
+,src/main/resources/templates/apartments.html,d\8\d8bd76d68509497a55b7840dbfc5c7dd3c4608bb
+Z
+*src/main/resources/templates/addFloor.html,c\b\cb10125411e84e905ad6cbc0b2c8c3fabc9e56e5
+^
+.src/main/resources/templates/addApartment.html,6\1\614ccca0bb06265aea49c79d55286041437109de

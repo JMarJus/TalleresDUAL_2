@@ -29,20 +29,4 @@ public class Floor implements Serializable {
 	 */
 	@Column(name = "level", nullable = false)
 	private Integer level;
-
-	/**
-	 * Number of apartments (Apartment Quantity)
-	 */
-	@Column(name = "apartment_qty", nullable = false)
-	private Integer apartmentQty;
-	
-	/**
-	 * Special setter for apartmentQty: The number of apartments in a floor can never be less than 0
-	 * @param apartmentQty
-	 */
-	public void setApartmentQty(Integer apartmentQty){
-		if (apartmentQty >= 0) {
-			this.apartmentQty = apartmentQty;
-		}
-	}
 }

@@ -15,8 +15,6 @@
     <fullyQualifiedTypeName name="org.springframework.boot.CommandLineRunner"/>
     <fullyQualifiedTypeName name="com.nttdata.services.AssignmentServiceI"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
-    <fullyQualifiedTypeName name="com.nttdata.persistence.Floor"/>
-    <fullyQualifiedTypeName name="com.nttdata.persistence.Apartment"/>
     <fullyQualifiedTypeName name="com.nttdata.persistence.FloorRepositoryI"/>
     <fullyQualifiedTypeName name="com.nttdata.services.FloorServiceI"/>
     <fullyQualifiedTypeName name="com.nttdata.services.ApartmentServiceI"/>
@@ -39,4 +37,8 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="com.nttdata.services.ApartmentServiceImpl"/>
+    <fullyQualifiedTypeName name="com.nttdata.services.FloorServiceImpl"/>
+    <fullyQualifiedTypeName name="com.nttdata.persistence.Apartment"/>
+    <fullyQualifiedTypeName name="com.nttdata.persistence.Floor"/>
 </qualifiedTypeNameHistroy>
