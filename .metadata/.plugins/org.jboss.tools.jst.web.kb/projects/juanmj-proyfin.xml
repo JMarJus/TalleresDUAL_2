@@ -101,11 +101,11 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-6.1.1.jar/meta-inf/spring-form.tld" project="spring01"/>
+      path="FileSystems/lib-spring-webmvc-6.1.1.jar/meta-inf/spring-form.tld" project="juanmj-proyfin"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-6.1.1.jar/meta-inf/spring.tld" project="spring01"/>
+      path="FileSystems/lib-spring-webmvc-6.1.1.jar/meta-inf/spring.tld" project="juanmj-proyfin"/>
     </library>
    </libraries>
   </path>

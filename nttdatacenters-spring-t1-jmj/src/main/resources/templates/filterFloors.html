@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Spring 01 - Add person</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	
+	<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+			<div class="card-header">Filter floors:</div>
+		  	<div class="card-body">
+				<form th:action="@{/postFilterApartments}">
+					<div class="form-group">
+			  			<label for="level">Floor - Level</label>
+						<input type="text" name="level" class="form-control">
+					</div>
+					<div class="form-group">
+			  			<label for="identityDoc">Person - Identity Document</label>
+						<input type="text" name="identityDoc" class="form-control">
+					</div>
+					<button type="submit" name="filter" class="btn btn-success">Filter</button>
+					-
+					<a onclick="history.go(-1)" class="btn btn-success">Return</a>
+					<a th:href="@{/getIndex}" class="btn btn-success">Main menu</a>
+				</form>
+			</div>
+		</div>
+	</body>
+	
+</html>

@@ -10,4 +10,6 @@ public interface ApartmentRepositoryI extends JpaRepository<Apartment, Long> {
 
 	public List<Apartment> findByFloorId(final Long floorId);
 
+	public List<Apartment> findByLetter(final Character letter);
+
 }

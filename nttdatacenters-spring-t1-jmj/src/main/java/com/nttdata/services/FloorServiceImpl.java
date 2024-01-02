@@ -6,14 +6,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nttdata.persistence.ApartmentRepositoryI;
 import com.nttdata.persistence.Floor;
 import com.nttdata.persistence.FloorRepositoryI;
+import com.nttdata.persistence.PersonRepositoryI;
 
 @Service
 public class FloorServiceImpl implements FloorServiceI {
 
 	@Autowired
 	private FloorRepositoryI floorRepository;
+
+	@Autowired
+	private ApartmentRepositoryI apartmentRepository;
+
+	@Autowired
+	private PersonRepositoryI personRepository;
 
 	@Override
 	public void newFloor(Floor floor) {
@@ -49,4 +57,14 @@ public class FloorServiceImpl implements FloorServiceI {
 	public void removeFloorById(Long id) {
 		floorRepository.deleteById(id);
 	}
+
+	@Override
+	public Floor getFloorByPersonIdentityDoc(String identityDoc) {
+		if (personRepository.findByIdentityDoc(identityDoc) != null) {
+			return floorRepository.findById(apartmentRepository.findById(personRepository.findByIdentityDoc(identityDoc).getApartmentId()).get().getFloorId()).get();
+		} else {
+			return floorRepository.findById(Long.parseLong("0")).get();
+		}
+	}
+	
 }

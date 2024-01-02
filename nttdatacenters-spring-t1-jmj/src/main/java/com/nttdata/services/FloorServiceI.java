@@ -16,6 +16,8 @@ public interface FloorServiceI {
 	public List<Floor> getAllFloors();
 	
 	public Floor getFloorByLevel(final Integer level);
+	
+	public Floor getFloorByPersonIdentityDoc(final String identityDoc);
 
 	Optional<Floor> getFloorById(Long id);
 

@@ -168,6 +168,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\naujz\Desktop\PROYECTO DUAL - SleepyManager\Proyecto\nttdatacenters-spring-t1-jmj"/>
 			<item value="C:\Users\naujz\Desktop\PROYECTO DUAL - SleepyManager\Proyecto\spring01"/>
 			<item value="C:\Users\naujz\Downloads\spring01.zip"/>
 			<item value="C:\Users\naujz\Pictures\Screenshots\PROYECTO FINAL\Boceto-Esqueleto\project-rest-nttdata-colaboracion"/>

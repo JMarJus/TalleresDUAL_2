@@ -1,6 +1,0 @@
-package com.nttdata.controllers;
-
-@RestController
-public class AssignmentController {
-
-}

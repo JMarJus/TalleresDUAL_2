@@ -1,6 +1,8 @@
 package com.nttdata.controllers;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,11 @@ public class ApartmentController {
 		return "apartments";
 	}
 	
+	@GetMapping("/getApartmentSearch")
+	public String apartmentFilters() {
+		return "filterApartments";
+	}
+	
 	@PostMapping("/postAddApartment")
 	public String newApartment(Apartment apartment, Model model) {
 		apartmentService.newApartment(apartment);
@@ -48,6 +55,50 @@ public class ApartmentController {
 	public String removeApartment(@RequestParam(value="id") Long id, Model model) {
 		apartmentService.removeApartmentById(id);
 		return showApartments(model);
+	}
+	
+	@GetMapping("/postFilterApartments")
+	public String filterApartments(Model model, Integer level, Character letter, String identityDoc) {
+		final Set<Apartment> apartments = new HashSet<>();
+		boolean init = false;
+		if(level != null) {
+			init = apartmentsInitChecker(init, apartments, apartmentService.getApartmentByFloorLevel(level));
+		}
+		if(letter != null) {
+			init = apartmentsInitChecker(init, apartments, apartmentService.getApartmentByLetter(letter));
+		}
+		if(identityDoc != null && !identityDoc.isBlank()) {
+			apartmentInitChecker(init, apartments, apartmentService.getApartmentByPersonIdentityDoc(identityDoc));
+		}
+		model.addAttribute("apartments", apartments);
+		return "apartments";
+	}
+	
+	private <Optional>boolean apartmentsInitChecker(boolean init, Set<Apartment> apartments, List<Apartment> newApartments) {
+		if (init) {
+			for (Apartment apartment: newApartments) {
+				if (!apartments.contains(apartment)) {
+					apartments.remove(apartment);
+				}
+			}
+		} else {
+			apartments.addAll(newApartments);
+		}
+		return true;
+	}
+	
+	private <Optional>boolean apartmentInitChecker(boolean init, Set<Apartment> apartments, Apartment apartment) {
+		if (apartment == null) {
+			return true;
+		}
+		if (init) {
+			if (!apartments.contains(apartment)) {
+				apartments.remove(apartment);
+			}
+		} else {
+			apartments.add(apartment);
+		}
+		return true;
 	}
 	
 }

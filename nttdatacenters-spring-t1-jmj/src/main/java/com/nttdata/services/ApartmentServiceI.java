@@ -13,7 +13,13 @@ public interface ApartmentServiceI {
 	
 	public List<Apartment> getAllApartments();
 	
+	public List<Apartment> getApartmentByLetter(final Character letter);
+	
 	public List<Apartment> getApartmentByFloor(final Long floorId);
+	
+	public List<Apartment> getApartmentByFloorLevel(final Integer level);
+	
+	public Apartment getApartmentByPersonIdentityDoc(final String identityDoc);
 
 	public Optional<Apartment> getApartmentById(Long id);
 
