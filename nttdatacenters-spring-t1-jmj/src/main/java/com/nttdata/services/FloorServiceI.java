@@ -7,9 +7,9 @@ import com.nttdata.persistence.Floor;
 
 public interface FloorServiceI {
 	
-	void newFloor(Floor floor);
+	public void newFloor(Floor floor);
 	
-	void removeFloor(Floor floor);
+	public void removeFloor(Floor floor);
 	
 	public Optional<Floor> getFloor(final Long id);
 	
@@ -19,7 +19,9 @@ public interface FloorServiceI {
 	
 	public Floor getFloorByPersonIdentityDoc(final String identityDoc);
 
-	Optional<Floor> getFloorById(Long id);
+	public Optional<Floor> getFloorById(Long id);
 
-	void removeFloorById(Long id);
+	public void removeFloorById(Long id);
+
+	public List<Floor> getAllFloorsSortByLevel();
 }

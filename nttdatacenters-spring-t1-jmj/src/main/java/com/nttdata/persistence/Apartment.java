@@ -31,18 +31,18 @@ public class Apartment implements Serializable {
 	private Long floorId;
 
 	/**
-	 * Apartment letter (Local ID for its floor)
+	 * Apartment letter (Local ID for its floor) (is always a capital letter)
 	 */
 	@Column(name = "letter", nullable = false)
 	private Character letter;
 	
 	/**
-	 * Special setter for letter: The Character must be a letter.
+	 * Special setter for letter: The Character must be a letter, and will be uppercased if needed.
 	 * @param letter
 	 */
-	public void setLetter(Character letter){
+	public void setLetter(Character letter) {
 		if (Character.isLetter(letter)) {
-			this.letter = letter;
+			this.letter = Character.toUpperCase(letter);
 		}
 	}
 }

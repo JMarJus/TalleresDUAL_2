@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.nttdata.persistence.ApartmentRepositoryI;
@@ -41,6 +42,11 @@ public class FloorServiceImpl implements FloorServiceI {
 	@Override
 	public List<Floor> getAllFloors() {
 		return floorRepository.findAll();
+	}
+
+	@Override
+	public List<Floor> getAllFloorsSortByLevel() {
+		return floorRepository.findAll(Sort.by(Sort.Direction.DESC, "level"));
 	}
 
 	@Override

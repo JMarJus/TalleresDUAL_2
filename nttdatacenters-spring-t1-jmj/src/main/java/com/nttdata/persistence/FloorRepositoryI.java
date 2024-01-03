@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FloorRepositoryI extends JpaRepository<Floor, Long> {
-	
+
 	public Floor findByLevel(final Integer level);
 
 }

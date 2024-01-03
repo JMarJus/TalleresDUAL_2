@@ -10,7 +10,7 @@
 	
 	<body class="card-body">
 		<div class="card text-white bg-dark mb-3">
-			<div class="card-header">List of people</div>
+			<div class="card-header">List of people:</div>
 			<div class="card-body">
 				<table aria-label="" class="table table-striped table-dark">
 					<thead class="thead-light">
@@ -31,12 +31,6 @@
 								<td th:text="${person.name}"/>
 								<td th:text="${person.surname}"/>
 								<td th:text="${person.apartmentId}"/>
-								<th:block th:each="apartment:${apartments}">
-									<span th:if="${apartment.id}==${person.apartmentId}"><td th:text="${apartment.letter}"/></span>
-									<th:block th:each="floor:${floors}">
-										<span th:if="${floor.id}==${apartment.floorId}"><td th:text="${floor.level}"/></span>
-									</th:block>
-								</th:block>
 								<td>
 									<form th:action="@{/postRemovePerson}" method="post">
 										<button type="submit" id="btnRemovePerson" name="id" th:value="${person.id}" class="btn btn-danger">X</button>
@@ -46,7 +40,7 @@
 						</th:block>
 					</tbody>
 				</table>
-				<a onclick="history.go(-1)" class="btn btn-success">Return</a>
+				<button onclick="history.go(-1)" class="btn btn-success">Return</button>
 				<a th:href="@{/getIndex}" class="btn btn-success">Main menu</a>
 			</div>
 		</div>

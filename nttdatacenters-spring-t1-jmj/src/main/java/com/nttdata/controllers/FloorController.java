@@ -53,7 +53,7 @@ public class FloorController {
 		return showFloors(model);
 	}
 	
-	@GetMapping("/postFilterFloors")
+	@GetMapping("/getFilterFloors")
 	public String filterFloors(Model model, Integer level, String identityDoc) {
 		final Set<Floor> floors = new HashSet<>();
 		boolean init = false;
@@ -67,16 +67,15 @@ public class FloorController {
 		return "floors";
 	}
 	
-	private <Optional>boolean floorInitChecker(boolean init, Set<Floor> floors, Floor floor) {
+	private boolean floorInitChecker(boolean init, Set<Floor> floors, Floor floor) {
 		if (floor == null) {
-			return true;
-		}
-		if (init) {
-			if (!floors.contains(floor)) {
-				floors.remove(floor);
+			if (init) {
+				if (!floors.contains(floor)) {
+					floors.remove(floor);
+				}
+			} else {
+				floors.add(floor);
 			}
-		} else {
-			floors.add(floor);
 		}
 		return true;
 	}

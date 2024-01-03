@@ -10,9 +10,9 @@
 	
 	<body class="card-body">
 		<div class="card text-white bg-dark mb-3">
-			<div class="card-header">Filter floors:</div>
+			<div class="card-header">Filter floors by...</div>
 		  	<div class="card-body">
-				<form th:action="@{/postFilterApartments}">
+				<form th:action="@{/getFilterApartments}">
 					<div class="form-group">
 			  			<label for="level">Floor - Level</label>
 						<input type="text" name="level" class="form-control">
@@ -22,8 +22,6 @@
 						<input type="text" name="identityDoc" class="form-control">
 					</div>
 					<button type="submit" name="filter" class="btn btn-success">Filter</button>
-					-
-					<a onclick="history.go(-1)" class="btn btn-success">Return</a>
 					<a th:href="@{/getIndex}" class="btn btn-success">Main menu</a>
 				</form>
 			</div>

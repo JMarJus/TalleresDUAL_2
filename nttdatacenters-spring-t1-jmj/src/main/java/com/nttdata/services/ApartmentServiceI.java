@@ -7,9 +7,9 @@ import com.nttdata.persistence.Apartment;
 
 public interface ApartmentServiceI {
 	
-	void newApartment(Apartment apartment);
+	public void newApartment(Apartment apartment);
 	
-	void removeApartment(Apartment apartment);
+	public void removeApartment(Apartment apartment);
 	
 	public List<Apartment> getAllApartments();
 	
@@ -23,5 +23,9 @@ public interface ApartmentServiceI {
 
 	public Optional<Apartment> getApartmentById(Long id);
 
-	void removeApartmentById(Long id);
+	public void removeApartmentById(Long id);
+
+	public List<Apartment> getAllApartmentsSortByLetter();
+
+	Apartment getApartmentByFloorLevelAndLetter(Integer level, Character letter);
 }

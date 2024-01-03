@@ -45,9 +45,20 @@ public class ApartmentController {
 	}
 	
 	@PostMapping("/postAddApartment")
-	public String newApartment(Apartment apartment, Model model) {
-		apartmentService.newApartment(apartment);
-		return showApartments(model);
+	public String newApartment(Integer level, Character letter, Model model) {
+		if (floorService.getFloorByLevel(level) != null) {
+			if (apartmentService.getApartmentByFloorLevelAndLetter(level, letter) == null) {
+				Apartment newApartment = new Apartment();
+				newApartment.setFloorId(floorService.getFloorByLevel(level).getId());
+				newApartment.setLetter(letter);
+				apartmentService.newApartment(newApartment);
+				return showApartments(model);
+			} else {
+				return errorScreen("There is already an apartment \'" + letter + "\' for \'Floor " + level + "\'", model);
+			}
+		} else {
+			return errorScreen("There is no \'Floor " + level + "\'", model);
+		}
 	}
 	
 	@PostMapping("/postRemoveApartment")
@@ -57,7 +68,7 @@ public class ApartmentController {
 		return showApartments(model);
 	}
 	
-	@GetMapping("/postFilterApartments")
+	@GetMapping("/getFilterApartments")
 	public String filterApartments(Model model, Integer level, Character letter, String identityDoc) {
 		final Set<Apartment> apartments = new HashSet<>();
 		boolean init = false;
@@ -74,7 +85,7 @@ public class ApartmentController {
 		return "apartments";
 	}
 	
-	private <Optional>boolean apartmentsInitChecker(boolean init, Set<Apartment> apartments, List<Apartment> newApartments) {
+	private boolean apartmentsInitChecker(boolean init, Set<Apartment> apartments, List<Apartment> newApartments) {
 		if (init) {
 			for (Apartment apartment: newApartments) {
 				if (!apartments.contains(apartment)) {
@@ -87,18 +98,22 @@ public class ApartmentController {
 		return true;
 	}
 	
-	private <Optional>boolean apartmentInitChecker(boolean init, Set<Apartment> apartments, Apartment apartment) {
+	private boolean apartmentInitChecker(boolean init, Set<Apartment> apartments, Apartment apartment) {
 		if (apartment == null) {
-			return true;
-		}
-		if (init) {
-			if (!apartments.contains(apartment)) {
-				apartments.remove(apartment);
+			if (init) {
+				if (!apartments.contains(apartment)) {
+					apartments.remove(apartment);
+				}
+			} else {
+				apartments.add(apartment);
 			}
-		} else {
-			apartments.add(apartment);
 		}
 		return true;
+	}
+	
+	private String errorScreen(String message, Model model) {
+		model.addAttribute("message", message);
+		return "error";
 	}
 	
 }

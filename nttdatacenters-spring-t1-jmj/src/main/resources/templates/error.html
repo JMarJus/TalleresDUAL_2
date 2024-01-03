@@ -12,7 +12,8 @@
 		<div class="card text-white bg-dark mb-3">
 			<div class="card-body">
 				<p>An error ocurred!</p>
-				<a onclick="history.go(-1)" class="btn btn-success">Return</a>
+				<p th:text="${message}"></p>
+				<button onclick="history.go(-1)" class="btn btn-success">Return</button>
 				<a th:href="@{/getIndex}" class="btn btn-success">Main menu</a>
 			</div>
 		</div>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.nttdata.persistence.Apartment;
@@ -36,6 +37,11 @@ public class ApartmentServiceImpl implements ApartmentServiceI {
 	@Override
 	public List<Apartment> getAllApartments() {
 		return apartmentRepository.findAll();
+	}
+
+	@Override
+	public List<Apartment> getAllApartmentsSortByLetter() {
+		return apartmentRepository.findAll(Sort.by("letter"));
 	}
 
 	@Override
@@ -74,5 +80,15 @@ public class ApartmentServiceImpl implements ApartmentServiceI {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public Apartment getApartmentByFloorLevelAndLetter(Integer level, Character letter) {
+		for (Apartment apartment: apartmentRepository.findByLetter(letter)) {
+			if (apartment.getFloorId().equals(floorRepository.findByLevel(level).getId())) {
+				return apartment;
+			}
+		}
+		return null;
 	}
 }

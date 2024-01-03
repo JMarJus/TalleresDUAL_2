@@ -6,13 +6,13 @@ import com.nttdata.persistence.Person;
 
 public interface PersonServiceI {
 	
-	void newPerson(Person person);
+	public void newPerson(Person person);
 	
-	void removePerson(Person person);
+	public void removePerson(Person person);
 	
-	void removePersonById(Long id);
+	public void removePersonById(Long id);
 	
-	void removePersonByIdentityDoc(String identityDoc);
+	public void removePersonByIdentityDoc(String identityDoc);
 	
 	public List<Person> getAllPeople();
 	

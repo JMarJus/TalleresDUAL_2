@@ -1,5 +1,6 @@
 package com.nttdata.controllers;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nttdata.persistence.Apartment;
 import com.nttdata.persistence.Person;
 import com.nttdata.services.ApartmentServiceImpl;
+import com.nttdata.services.FloorServiceImpl;
 import com.nttdata.services.PersonServiceImpl;
 
 @Controller
@@ -26,6 +29,9 @@ public class PersonController {
 	
 	@Autowired
 	public ApartmentServiceImpl apartmentService;
+	
+	@Autowired
+	public FloorServiceImpl floorService;
 	
 	@GetMapping("/getAddPerson")
 	public String addPerson() {
@@ -45,12 +51,25 @@ public class PersonController {
 	}
 	
 	@PostMapping("/postAddPerson")
-	public String newPerson(Person person, Model model) {
-		if (apartmentService.getApartmentById(person.getApartmentId()).isPresent()) {
-			personService.newPerson(person);
-			return showPeople(model);
+	public String newPerson(Integer level, Character letter, String identityDoc, String name, String surname, Model model) {
+		if (floorService.getFloorByLevel(level) != null) {
+			if (apartmentService.getApartmentByFloorLevelAndLetter(level, letter) != null) {
+				if (personService.getPersonByIdentityDoc(identityDoc) == null) {
+					Person newPerson = new Person();
+					newPerson.setApartmentId(apartmentService.getApartmentByFloorLevelAndLetter(level, letter).getId());
+					newPerson.setIdentityDoc(identityDoc);
+					newPerson.setName(name);
+					newPerson.setSurname(surname);
+					personService.newPerson(newPerson);
+					return showPeople(model);
+				} else {
+					return errorScreen("There is already a person with Identity Document \'" + identityDoc + "\'", model);
+				}
+			} else {
+				return errorScreen("There is no apartment \'" + letter + "\' for \'Floor " + level + "\'", model);
+			}
 		} else {
-			return showPeople(model);
+			return errorScreen("There is no \'Floor " + level + "\'", model);
 		}
 	}
 	
@@ -61,7 +80,7 @@ public class PersonController {
 		return showPeople(model);
 	}
 	
-	@GetMapping("/postFilterPeople")
+	@GetMapping("/getFilterPeople")
 	public String filterPeople(Model model, Integer level, Character letter, String identityDoc, String name, String surname) {
 		final Set<Person> people = new HashSet<>();
 		boolean init = false;
@@ -84,7 +103,7 @@ public class PersonController {
 		return "people";
 	}
 	
-	private <Optional>boolean peopleInitChecker(boolean init, Set<Person> people, List<Person> newPeople) {
+	private boolean peopleInitChecker(boolean init, Set<Person> people, List<Person> newPeople) {
 		if (init) {
 			for (Person person: newPeople) {
 				if (!people.contains(person)) {
@@ -97,18 +116,30 @@ public class PersonController {
 		return true;
 	}
 	
-	private <Optional>boolean personInitChecker(boolean init, Set<Person> people, Person person) {
-		if (person == null) {
-			return true;
-		}
-		if (init) {
-			if (!people.contains(person)) {
-				people.remove(person);
+	private boolean personInitChecker(boolean init, Set<Person> people, Person person) {
+		if (person != null) {
+			if (init) {
+				if (!people.contains(person)) {
+					people.remove(person);
+				}
+			} else {
+				people.add(person);
 			}
-		} else {
-			people.add(person);
 		}
 		return true;
+	}
+	
+	@GetMapping("/getApartmentResidents")
+	public String showPeople(Model model, Long id) {
+		final List<Person> people = new ArrayList<>();
+		people.addAll(personService.getPersonByApartmentId(id));
+		model.addAttribute("people", people);
+		return "people";
+	}
+	
+	private String errorScreen(String message, Model model) {
+		model.addAttribute("message", message);
+		return "error";
 	}
 	
 }
